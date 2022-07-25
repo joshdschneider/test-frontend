@@ -1,0 +1,51 @@
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #000;
+  color: #fff;
+}
+
+.logo > h5 {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+
+.login,
+.account {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.avatar {
+  display: block;
+  cursor: pointer;
+}
+
+.avatar > img {
+  display: block;
+  width: 45px;
+  height: auto;
+  margin: 0 0 0 15px;
+  border-radius: 50%;
+  border: 1px solid #515151;
+}
+
+button {
+  display: block;
+  appearance: none;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  padding: 7px 9px;
+  margin: 0 0 0 15px;
+  background: #373737;
+  border: 1px solid #515151;
+  border-radius: 5px;
+  cursor: pointer;
+}
