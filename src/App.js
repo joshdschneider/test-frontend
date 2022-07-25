@@ -19,7 +19,7 @@ function Items() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/items')
+    fetch('/items')
       .then((res) => res.json())
       .then((data) => setItems(data.items))
       .catch((e) => console.log(e));
@@ -58,7 +58,7 @@ function Users({ accessToken }) {
       Authorization: `Bearer ${accessToken}`,
     };
 
-    fetch('http://localhost:3001/users', { headers: headers })
+    fetch('/users', { headers: headers })
       .then((res) => res.json())
       .then((data) => setUsers(data.users))
       .catch((e) => console.log(e));
