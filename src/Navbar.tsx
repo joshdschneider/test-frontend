@@ -1,15 +1,20 @@
-import { withAuthInfo, useLogoutFunction, useRedirectFunctions } from '@propelauth/react';
+import React from 'react';
+import { withAuthInfo, useLogoutFunction, useRedirectFunctions, WithAuthInfoProps, User } from '@propelauth/react';
 import './Navbar.css';
 
-function Account({ user }) {
+type AccountProps = {
+  user: User
+}
+
+function Account({ user }: AccountProps) {
   const { redirectToAccountPage } = useRedirectFunctions();
   const logout = useLogoutFunction();
 
   return (
     <div className='account'>
-      <button onClick={() => logout()}>Logout</button>
+      <button onClick={() => logout(true)}>Logout</button>
       <div className='avatar' onClick={redirectToAccountPage}>
-        <img src={user.pictureUrl} alt='user' />
+        <img src={user ? user.pictureUrl : ''} alt='user' />
       </div>
     </div>
   );
@@ -26,7 +31,7 @@ function Login() {
   );
 }
 
-function Navbar({ isLoggedIn, user }) {
+function Navbar({ isLoggedIn, user }: WithAuthInfoProps) {
   return (
     <div className='Navbar'>
       <div className='logo'>

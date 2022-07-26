@@ -1,9 +1,9 @@
-import { withAuthInfo } from '@propelauth/react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { withAuthInfo, WithAuthInfoProps } from '@propelauth/react';
 import Navbar from './Navbar';
 import './App.css';
 
-function App({ accessToken }) {
+function App({ accessToken }: WithAuthInfoProps) {
   return (
     <div className='App'>
       <Navbar />
@@ -15,8 +15,14 @@ function App({ accessToken }) {
   );
 }
 
+type Item = {
+  id: string
+  name: string
+  price: string
+}
+
 function Items() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
     fetch('/items')
@@ -49,8 +55,18 @@ function Items() {
   );
 }
 
-function Users({ accessToken }) {
-  const [users, setUsers] = useState([]);
+type User = {
+  id: string
+  name: string
+  location: string
+}
+
+type UsersProps = {
+  accessToken: string | null
+}
+
+function Users({ accessToken }: UsersProps)  {
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const headers = {
